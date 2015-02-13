@@ -1,0 +1,60 @@
+#include{
+	color:grey;
+}
+.code{
+	border:solid grey 1px;
+	font-size: 14px;
+	background-color: #eee;
+	padding: 14px;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+}
+
+#comment{
+	color:#9090F5;
+}
+
+#dataType{
+	color:blue;
+}
+
+#placeHolder{
+	color: purple;
+}
+
+#conditional{
+	color: red;
+}
+
+code{
+	border:solid grey 1px;
+}
+
+#string{
+	color:green;
+}
+
+#escape{
+	color:orange;
+}
+#number {
+	color:brown;
+}
+
+#id{
+	color:#ff5500;
+}
+
+#class{
+	color:#00af00;
+}
+#px{
+	color:blue;
+}
+#tags{
+	color:red;
+}
+
+
+
