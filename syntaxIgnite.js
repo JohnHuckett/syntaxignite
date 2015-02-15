@@ -1,9 +1,16 @@
 //"use strict";
+var timerStart;
+var timerStop;
+
 window.onload = function(){
 	convert();
 }
+function getDate(){
+		return Date.now();
+	}
 
 function convert(){
+	timerStart = getDate();
 	var bar = document.getElementsByClassName('code');
 	bar = bar.length;
 	for(var i=0;i<bar;i++){
@@ -26,12 +33,43 @@ function convert(){
 				str = languageHTML(str);
 				document.getElementById(foo).innerHTML = str;
 				break;
+			case "language-terminal":
+				str = languageTerminal(str);
+				document.getElementById(foo).innerHTML = str;
+				break;
+			case "language-bash":
+				str = languageBash(str);
+				document.getElementById(foo).innerHTML = str;
+				break;
 		}	
 	}
-
+	timerStop = getDate();
+	console.log(timerStop-timerStart+"ms (syntaxignite render time)")
 }
-function languageHTML(str){
+
+function languageBash(str){
 	return(str)
+}
+
+function languageTerminal(str){
+	return(str) .replace(/←/,'&#8592')
+				.replace(/↑/,'&#8593')
+				.replace(/→/,'&#8594')
+				.replace(/↓/,'&#8595')
+				.replace(/↔/,'&#8596')
+				.replace(/↕/,'&#8597')
+				.replace(/↖/,'&#8598')
+				.replace(/↗/,'&#8599')
+				.replace(/↘/,'&#8600')
+				.replace(/↙/,'&#8601')
+				.replace(/↳/g,'&#8627')
+				.replace(/⎜/g,'&#9116;')
+				.replace(/⎡/g,'&#9121')
+				.replace(/⎣/g,'&#9123;')	
+}
+
+function languageHTML(str){
+	return(str)	
 				//angle brackets
 				.replace(/</g, '&lt;')
 				.replace(/>/g, '&gt;')
