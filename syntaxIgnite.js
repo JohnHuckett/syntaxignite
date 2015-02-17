@@ -3,48 +3,53 @@ var timerStart;
 var timerStop;
 
 window.onload = function(){
+	timerStart = getDate();
 	convert();
 }
 function getDate(){
 		return Date.now();
 	}
+	
 
 function convert(){
-	timerStart = getDate();
 	var bar = document.getElementsByClassName('code');
 	bar = bar.length;
-	for(var i=0;i<bar;i++){
-		var foo = document.getElementsByClassName('code')[i].id;
-		var str = document.getElementById(foo).innerHTML;
+	var foo;
+	var str;
+	var i = 0;
+	for(i=0;i<bar;i++){
+		str = document.getElementsByClassName('code')[i].innerHTML;
+		foo = document.getElementsByClassName('code')[i].id;
+
 		switch(foo){
 			case "language-c":
 				str = languageC(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-js":
 				str = languageJs(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-css":
 				str = languageCss(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-html":
 				str = languageHTML(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-terminal":
 				str = languageTerminal(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-bash":
 				str = languageBash(str);
-				document.getElementById(foo).innerHTML = str;
+				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 		}	
 	}
 	timerStop = getDate();
-	console.log(timerStop-timerStart+"ms (syntaxignite render time)")
+	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
 
 function languageBash(str){
@@ -52,19 +57,19 @@ function languageBash(str){
 }
 
 function languageTerminal(str){
-	return(str) .replace(/←/,'&#8592')
-				.replace(/↑/,'&#8593')
-				.replace(/→/,'&#8594')
-				.replace(/↓/,'&#8595')
-				.replace(/↔/,'&#8596')
-				.replace(/↕/,'&#8597')
-				.replace(/↖/,'&#8598')
-				.replace(/↗/,'&#8599')
-				.replace(/↘/,'&#8600')
-				.replace(/↙/,'&#8601')
-				.replace(/↳/g,'&#8627')
+	return(str) .replace(/←/g,'&#8592;')
+				.replace(/↑/g,'&#8593;')
+				.replace(/→/g,'&#8594;')
+				.replace(/↓/g,'&#8595;')
+				.replace(/↔/g,'&#8596;')
+				.replace(/↕/g,'&#8597;')
+				.replace(/↖/g,'&#8598;')
+				.replace(/↗/g,'&#8599;')
+				.replace(/↘/g,'&#8600;')
+				.replace(/↙/g,'&#8601;')
+				.replace(/↳/g,'&#8627;')
 				.replace(/⎜/g,'&#9116;')
-				.replace(/⎡/g,'&#9121')
+				.replace(/⎡/g,'&#9121;')
 				.replace(/⎣/g,'&#9123;')	
 }
 
