@@ -1,4 +1,8 @@
-//"use strict";
+var LineNumbers = true;
+var theme = "0";
+
+
+/*********************************************************/
 var timerStart;
 var timerStop;
 
@@ -6,10 +10,10 @@ window.onload = function(){
 	timerStart = getDate();
 	convert();
 }
+
 function getDate(){
 		return Date.now();
 	}
-	
 
 function convert(){
 	var bar = document.getElementsByClassName('code');
@@ -21,21 +25,25 @@ function convert(){
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
 
-		switch(foo){
+		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
+				str = addLineNums(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-js":
 				str = languageJs(str);
+				str = addLineNums(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-css":
 				str = languageCss(str);
+				str = addLineNums(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-html":
 				str = languageHTML(str);
+				str = addLineNums(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-terminal":
@@ -51,6 +59,32 @@ function convert(){
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
+
+function addLineNums(str){
+	//var str = document.getElementById(str).innerHTML;
+	var res = str.split('\n');
+	var len = res.length-1;
+	var i = 0;
+	console.log(res);
+	var lineNum;
+		for(i=0;i<len;i++){
+			lineNum = res+1;
+			if(i<=9){
+				res[i] = '   '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+			}
+			if(i>=10&&i<=99){
+				res[i] = '  '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+			}
+			if(i>=100&&i<=999){
+				res[i] = ' '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+			}
+			if(i>=1000&&i<=9999){
+				res[i] = ''+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+			}
+		}
+			res = res.join('');
+			return res;
+	}
 
 function languageBash(str){
 	return(str)
