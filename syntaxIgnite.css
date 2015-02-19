@@ -6,6 +6,7 @@
 	font-size: 14px;
 	background-color: #eee;
 	padding: 14px;
+	//padding-top: 0px;
 	padding-left: 0px;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -69,7 +70,22 @@ code{
 	color: black;
 }
 #lineNumDivs{
-	color: black;
+	//color: black;
+	display:inline-block;
+	width:1px;
+	margin-left: 2px;
+	margin-right:2px;
+	background-color: black;	
+}
+
+.codeTitle{
+	background-color: blue;
+	width:100%;
+	padding:14px; 
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin:0px;
+	color:white;
 }
 
 

@@ -24,26 +24,33 @@ function convert(){
 	for(i=0;i<bar;i++){
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
-
+		title = document.getElementsByClassName('code')[i].title;
+		//console.log(title);
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				str = addLineNums(str);
+				console.log(title);
+				str = addLineNums(str,title);
+
+				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-js":
 				str = languageJs(str);
 				str = addLineNums(str);
+				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-css":
 				str = languageCss(str);
 				str = addLineNums(str);
+				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-html":
 				str = languageHTML(str);
 				str = addLineNums(str);
+				//str = addTitle(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-terminal":
@@ -59,27 +66,47 @@ function convert(){
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
+function addTitle(str,title){
+	if(title){
+		str = '<div class=\"codeTitle\"><h2>' + title + '</h2></div>' + '<br>' +str;
+		return(str);
+	}
+	else{
+		return(str);
+	}
+	
+
+	//if(typeof title != 'undefined'){
+	//	str = '<div class=\"codeTitle\"><h2>' + title + '</h2></div>' + '<br>' +str;
+	//	//console.log(title);
+	//	return(str);
+	//}
+	//else{
+	//	return(str);
+	//}
+	
+}
 
 function addLineNums(str){
 	//var str = document.getElementById(str).innerHTML;
 	var res = str.split('\n');
 	var len = res.length-1;
 	var i = 0;
-	console.log(res);
+	//console.log(res);
 	var lineNum;
 		for(i=0;i<len;i++){
 			lineNum = res+1;
 			if(i<=9){
-				res[i] = '   '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+				res[i] = '   '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=10&&i<=99){
-				res[i] = '  '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+				res[i] = '  '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=100&&i<=999){
-				res[i] = ' '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+				res[i] = ' '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=1000&&i<=9999){
-				res[i] = ''+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\">&#9116;</span> '+res[i]+'\n';
+				res[i] = ''+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 		}
 			res = res.join('');
@@ -209,5 +236,5 @@ function languageC(str){
 
 function consoleLog (argument) {
 	var str = document.getElementById("language-c").innerHTML;
-	console.log(str.split(/[""]/g));
+	//console.log(str.split(/[""]/g));
 }

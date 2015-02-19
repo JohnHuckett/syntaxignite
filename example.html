@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="syntaxIgnite.css">
+	<script type="text/javascript" src="syntaxIgnite.js"></script>
+
+</head>
+
+<body>
+
+<h1>Function to Replace Character in String</h1>
+<h2>C</h2>
+
+<pre class="code" id="language-c" title="example.c">
+/*
+	Example code for syntax highlighter
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"myLib.h"
+
+void countToTen();
+
+int main(){
+	countToTen();
+	return;
+}
+
+
+void countToTen(){
+	int i;
+	char potato[] = "potato";//this is a comment
+	for(i=0;i<=10;i++){
+		printf("%d %s\n",i,potato);
+	return;
+}
+
+
+/*
+	Another comment
+*/
+</pre>
+
+<p>blah blah blah <code>someCode()</code> blah</p>
+
+<h2>Javascript</h2>
+<pre class="code" id="language-js" title="example.js">
+function languageCss(str){
+	return(str)	//comments
+	.replace(/\/\/(.*?)\n/ , '<span id="comment">$&</span>')
+	//class
+	.replace(/\.(.*?)[a-z|A-Z|0-9]{0,}/g , '<span id="class">$&</span>')
+	//id
+	.replace(/#(.*?){/g , '<span id="id">#$1</span>{')
+	//hex number
+	.replace(/#(.*?);/g , '<span id="number">#$1</span>;')
+	//number
+
+	//px
+	.replace(/px/,'<span id="px">$&</span>')
+	//tags
+	.replace(/\n(.*?){/g, '\n<span id="tags">$1</span>{')
+}
+
+</pre>
+<h2>CSS</h2>
+<pre class="code" id="language-css" title="example.css">
+
+#ballsToYouFucknuts {
+	color:#121212; //this is a comment
+}
+.arse {
+	color:#2g2g2g;
+}
+.helloMonkeyFace{
+	
+}
+code{
+	border:solid grey 1px;
+}
+</pre>
+<h2>HTML</h2>
+
+<pre class="code" id="language-html">
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+<h1>hello</h1>
+<p>blah blah blah</p>
+<script type="text/javascript"></script>
+<svg></svg>
+</pre>
+<h2>Bash</h2>
+<pre class="code" id="language-bash">
+#!/bin/bash
+x=1
+while [ $x -le 5 ]
+do
+  echo "Welcome $x times"
+  x=$(( $x + 1 ))
+done	
+</pre>
+<h2>Terminal</h2>
+<pre class="code" id="language-terminal">
+satan@hell666:~xinput list
+⎡ Virtual core pointer                    		id=2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+⎜   ↳ SynPS/2 Synaptics TouchPad              	id=11	[slave  pointer  (2)]
+⎣ Virtual core keyboard                   		id=3	[master keyboard (2)]
+    ↳ Virtual core XTEST keyboard             	id=5	[slave  keyboard (3)]
+    ↳ Power Button                            	id=6	[slave  keyboard (3)]
+    ↳ Video Bus                               	id=7	[slave  keyboard (3)]
+    ↳ Power Button                            	id=8	[slave  keyboard (3)]
+    ↳ HP Webcam-101                           	id=9	[slave  keyboard (3)]
+    ↳ AT Translated Set 2 keyboard            	id=10	[slave  keyboard (3)]
+    ↳ HP WMI hotkeys                          	id=12	[slave  keyboard (3)]
+</pre>
+</body>
+</html>
