@@ -68,7 +68,7 @@ function convert(){
 }
 function addTitle(str,title){
 	if(title){
-		str = '<div class=\"codeTitle\"><h2>' + title + '</h2></div>' + '<br>' +str;
+		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + title + '</h2></div>' + str;
 		return(str);
 	}
 	else{
