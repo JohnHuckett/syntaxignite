@@ -1,6 +1,14 @@
+/* TODO 
+	cssInit 
+*/
+
+
 var LineNumbers = true;
 var theme = "0";
 
+function cssInit(){
+	
+}
 
 /*********************************************************/
 var timerStart;
@@ -10,6 +18,10 @@ window.onload = function(){
 	timerStart = getDate();
 	convert();
 }
+
+/*********************************************************/
+
+
 
 function getDate(){
 		return Date.now();
@@ -24,22 +36,24 @@ function convert(){
 	for(i=0;i<bar;i++){
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
+		
+
 		title = document.getElementsByClassName('code')[i].title;
 		//console.log(title);
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				console.log(title);
-				str = addLineNums(str,title);
-
+				str = addLineNums(str);
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
+				
 				break;
 			case "language-js":
 				str = languageJs(str);
 				str = addLineNums(str);
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
+				
 				break;
 			case "language-css":
 				str = languageCss(str);
@@ -63,28 +77,19 @@ function convert(){
 				break;
 		}	
 	}
+	cssInit();
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
-function addTitle(str,title){
+
+function addTitle(str,title,i){
 	if(title){
-		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + title + '</h2></div>' + str;
+		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + title + '</h2></div>' + '' + str;
 		return(str);
 	}
 	else{
 		return(str);
 	}
-	
-
-	//if(typeof title != 'undefined'){
-	//	str = '<div class=\"codeTitle\"><h2>' + title + '</h2></div>' + '<br>' +str;
-	//	//console.log(title);
-	//	return(str);
-	//}
-	//else{
-	//	return(str);
-	//}
-	
 }
 
 function addLineNums(str){

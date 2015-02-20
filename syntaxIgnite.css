@@ -2,17 +2,31 @@
 	color:grey;
 }
 .code{
-	border:solid grey 1px;
+	//padding:0px;
+	//border:solid grey 0px;
+	//padding-top: 4em;
 	font-size: 14px;
 	background-color: #eee;
-	//padding: 0px;
-	//padding-top: -14px;
-	//padding-left: 0px;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
 	overflow: auto;
 }
+.codeWithTitle{
+	padding:0px;
+	//border:solid grey 0px;
+	font-size: 14px;
+	background-color: #eee;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	overflow: auto;
+
+}
+.codeWithLineNums{
+	
+}
+
 
 #comment{
 	color:#9090F5;
@@ -79,12 +93,14 @@ code{
 }
 
 .codeTitle{
+	position: relative;
 	background-color: blue;
 	width:100%;
-	padding:3px; 
+	padding:3px;
 	margin:0px;
 	color:white;
 	font-size: 18px;
+	//top:-20px;
 }
 
 
