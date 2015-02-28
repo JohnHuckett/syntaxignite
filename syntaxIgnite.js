@@ -64,7 +64,7 @@ function convert(){
 			case "language-html":
 				str = languageHTML(str);
 				str = addLineNums(str);
-				//str = addTitle(str);
+				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-terminal":

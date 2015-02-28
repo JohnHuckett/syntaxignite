@@ -78,6 +78,7 @@ code{
 	background-color: black;
 	color: green;
 	font-family: monospace;
+	padding:5px;
 }
 
 #lineNums{
