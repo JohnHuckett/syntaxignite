@@ -21,8 +21,6 @@ window.onload = function(){
 
 /*********************************************************/
 
-
-
 function getDate(){
 		return Date.now();
 	}
@@ -34,39 +32,67 @@ function convert(){
 	var str;
 	var i = 0;
 	var dat;
+	var copy = false;
+	var Num = false;
+	var hide = false;
+	
 	for(i=0;i<bar;i++){
+		copy = false;
+		num = false;
+		hide = false;
+
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
 		dat = document.getElementsByClassName('code')[i].getAttribute("data-options");
-		console.log(dat);
 		
-
+		if(dat!==null){
+			if(dat.search(/copy/)!==null){
+				copy = true;
+			}
+			if(dat.search(/num/)!==null){
+				num = true;
+			}
+			if(dat.search(/hide/)!==null){
+				hide = true;
+			}
+			
+		}
+		console.log("num = "+num);
+		
 		title = document.getElementsByClassName('code')[i].title;
 		//console.log(title);
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				str = addLineNums(str);
+				if(num == true){
+					str = addLineNums(str);
+				}
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				
 				break;
 			case "language-js":
 				str = languageJs(str);
-				str = addLineNums(str);
+				if(num == true){
+					str = addLineNums(str);
+				}
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				
 				break;
 			case "language-css":
 				str = languageCss(str);
-				str = addLineNums(str);
+				if(num == true){
+					str = addLineNums(str);
+				}
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-html":
 				str = languageHTML(str);
-				str = addLineNums(str);
+				if(num == true){
+					str = addLineNums(str);
+				}
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
@@ -96,6 +122,7 @@ function addTitle(str,title,i){
 }
 
 function addLineNums(str){
+	//console.log(dat);
 	//var str = document.getElementById(str).innerHTML;
 	var res = str.split('\n');
 	var len = res.length-1;
