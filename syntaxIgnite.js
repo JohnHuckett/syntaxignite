@@ -33,9 +33,12 @@ function convert(){
 	var foo;
 	var str;
 	var i = 0;
+	var dat;
 	for(i=0;i<bar;i++){
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
+		dat = document.getElementsByClassName('code')[i].getAttribute("data-options");
+		console.log(dat);
 		
 
 		title = document.getElementsByClassName('code')[i].title;
@@ -84,7 +87,7 @@ function convert(){
 
 function addTitle(str,title,i){
 	if(title){
-		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + title + '</h2></div>' + '' + str;
+		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title + '</h2></div>' + '' + str;
 		return(str);
 	}
 	else{
@@ -102,16 +105,16 @@ function addLineNums(str){
 		for(i=0;i<len;i++){
 			lineNum = res+1;
 			if(i<=9){
-				res[i] = '   '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
+				res[i] = '<span class=\"lineNums\">'+'   '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=10&&i<=99){
-				res[i] = '  '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
+				res[i] = '<span class=\"lineNums\">'+'  '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=100&&i<=999){
-				res[i] = ' '+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
+				res[i] = '<span class=\"lineNums\">'+' '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 			if(i>=1000&&i<=9999){
-				res[i] = ''+'<span id=\"lineNums\">'+(i)+'</span>'+'<span id=\"lineNumDivs\"> </span> '+res[i]+'\n';
+				res[i] = '<span class=\"lineNums\">'+''+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 		}
 			res = res.join('');

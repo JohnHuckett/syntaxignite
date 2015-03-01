@@ -2,15 +2,18 @@
 	color:grey;
 }
 .code{
-	//padding:0px;
-	//border:solid grey 0px;
-	//padding-top: 4em;
 	font-size: 14px;
-	background-color: #eee;
+	background-color: #222;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
 	overflow: auto;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: solid grey 0;
+	color:white;
 }
 .codeWithTitle{
 	padding:0px;
@@ -23,35 +26,24 @@
 	overflow: auto;
 
 }
-.codeWithLineNums{
-	
-}
-
-
 #comment{
 	color:#9090F5;
 }
-
 #dataType{
 	color:blue;
 }
-
 #placeHolder{
 	color: purple;
 }
-
 #conditional{
 	color: red;
 }
-
 code{
 	border:solid grey 1px;
 }
-
 #string{
 	color:green;
 }
-
 #escape{
 	color:orange;
 }
@@ -81,27 +73,28 @@ code{
 	padding:5px;
 }
 
-#lineNums{
-	color: black;
+.lineNums{
+	color: #555;
+	background-color: #222;
+	display: inline-block;
+	padding-right: .5em;
 }
-#lineNumDivs{
-	//color: black;
+.lineNumDivs{
 	display:inline-block;
 	width:1px;
 	margin-left: 2px;
 	margin-right:2px;
-	background-color: black;	
+	background-color: grey;
 }
-
 .codeTitle{
+	//padding-left: .5em;
+	//height:100%;
 	position: relative;
-	background-color: blue;
+	background-color: grey;
 	width:100%;
-	padding:3px;
-	margin:0px;
+	margin:0;
 	color:white;
-	font-size: 18px;
-	//top:-20px;
+	font-size: 14px;
+	top:-7px;
+	padding-top: 4px;
 }
-
-
