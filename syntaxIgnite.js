@@ -33,7 +33,7 @@ function convert(){
 	var i = 0;
 	var dat;
 	var copy = false;
-	var Num = false;
+	var num = false;
 	var hide = false;
 	
 	for(i=0;i<bar;i++){
@@ -41,23 +41,26 @@ function convert(){
 		num = false;
 		hide = false;
 
+
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
 		dat = document.getElementsByClassName('code')[i].getAttribute("data-options");
 		
 		if(dat!==null){
-			if(dat.search(/copy/)!==null){
+			if(dat.search("copy")>0){
 				copy = true;
 			}
-			if(dat.search(/num/)!==null){
+			if(dat.search("num")>0){
 				num = true;
 			}
-			if(dat.search(/hide/)!==null){
+			if(dat.search("hide")>0){
 				hide = true;
 			}
 			
 		}
+		console.log("copy = "+copy)
 		console.log("num = "+num);
+
 		
 		title = document.getElementsByClassName('code')[i].title;
 		//console.log(title);
@@ -69,7 +72,6 @@ function convert(){
 				}
 				str = addTitle(str,title);
 				document.getElementsByClassName('code')[i].innerHTML = str;
-				
 				break;
 			case "language-js":
 				str = languageJs(str);
