@@ -46,13 +46,13 @@ function convert(){
 		dat = document.getElementsByClassName('code')[i].getAttribute("data-options");
 		
 		if(dat!==null){
-			if(dat.search("copy")>0){
+			if(dat.search("copy")>=0){
 				copy = true;
 			}
-			if(dat.search("num")>0){
+			if(dat.search("num")>=0){
 				num = true;
 			}
-			if(dat.search("hide")>0){
+			if(dat.search("hide")>=0){
 				hide = true;
 			}	
 		}
@@ -62,8 +62,8 @@ function convert(){
 			hide = false;
 		}
 		
-		console.log("copy = "+copy)
-		console.log("num = "+num);
+		//console.log("copy = "+copy)
+		//console.log("num = "+num);
 
 		
 		title = document.getElementsByClassName('code')[i].title;
@@ -71,18 +71,18 @@ function convert(){
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				doTheBiz(str,num,title,i);
+				doTheBiz(str,num,title,copy,i);
 				break;
 			case "language-js":
 				str = languageJs(str);
-				doTheBiz(str,num,title,i);
+				doTheBiz(str,num,title,copy,i);
 				break;
 			case "language-css":
 				str = languageCss(str);
-				doTheBiz(str,num,title,i);break;
+				doTheBiz(str,num,title,copy,i);break;
 			case "language-html":
 				str = languageHTML(str);
-				doTheBiz(str,num,title,i);break;
+				doTheBiz(str,num,title,copy,i);break;
 			case "language-terminal":
 				str = languageTerminal(str);
 				if(num == true){
@@ -93,7 +93,7 @@ function convert(){
 				break;
 			case "language-bash":
 				str = languageBash(str);
-				doTheBiz(str,num,title,i);
+				doTheBiz(str,num,title,copy,i);
 				break;
 		}	
 	}
@@ -101,16 +101,27 @@ function convert(){
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
-function doTheBiz(str,num,title,i){
+function doTheBiz(str,num,title,copy,i){
+	if(copy == true){
+		str = addCopy(str);
+	}
 	if(num == true){
 		str = addLineNums(str);
 	}
+
 	str = addCodeWrap(str,num);
+
 	str = addTitle(str,title);
+
 	document.getElementsByClassName('code')[i].innerHTML = str;
 	return;
 }
+function addCopy(str){
+	//str = str + '<button type=\"button\">copy</button>';
+	return(str);
+}
 function addTitle(str,title,i){
+
 	if(title){
 		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title + '</h2></div>' + '' + str;
 		return(str);
@@ -140,17 +151,17 @@ function addLineNums(str){
 	var lineNum;
 		for(i=0;i<len;i++){
 			lineNum = res+1;
-			if(i<=9){
-				res[i] = '<span class=\"lineNums\">'+'   '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
+			if(i+1<=9){
+				res[i] = '<span class=\"lineNums\">'+'   '+(i+1)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
-			if(i>=10&&i<=99){
-				res[i] = '<span class=\"lineNums\">'+'  '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
+			if(i+1>=10&&i<=99){
+				res[i] = '<span class=\"lineNums\">'+'  '+(i+1)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
-			if(i>=100&&i<=999){
-				res[i] = '<span class=\"lineNums\">'+' '+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
+			if(i+1>=100&&i<=999){
+				res[i] = '<span class=\"lineNums\">'+' '+(i+1)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
-			if(i>=1000&&i<=9999){
-				res[i] = '<span class=\"lineNums\">'+''+(i)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
+			if(i+1>=1000&&i<=9999){
+				res[i] = '<span class=\"lineNums\">'+''+(i+1)+'</span>'+'<span class=\"lineNumDivs\"> </span> '+res[i]+'\n';
 			}
 		}
 			res = res.join('');

@@ -3,7 +3,7 @@
 }
 .code{
 	font-size: 14px;
-	background-color: #222;
+	background-color: #fff;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
@@ -12,8 +12,8 @@
 	margin-bottom: .5em;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	border: solid grey 0;
-	color:white;
+	border: solid grey 1px;
+	color:black;
 }
 .codeWithTitle{
 	padding:0px;
@@ -75,7 +75,7 @@ code{
 
 .lineNums{
 	color: #555;
-	background-color: #222;
+	background-color: white;
 	display: inline-block;
 	padding-right: .5em;
 }
@@ -105,4 +105,17 @@ code{
 .codeWrapLineNum{
 	padding-left: 0;
 	padding-right: 20px;
+}
+.copy{
+	//width:50px;
+	//height:50px;
+	position:absolute;
+	z-index: 10;
+	right:10px;
+	//top:10px;
+	//float:right;
+	//float:top;
+
+
+
 }
