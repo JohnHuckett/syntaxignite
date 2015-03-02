@@ -41,7 +41,6 @@ function convert(){
 		num = false;
 		hide = false;
 
-
 		str = document.getElementsByClassName('code')[i].innerHTML;
 		foo = document.getElementsByClassName('code')[i].id;
 		dat = document.getElementsByClassName('code')[i].getAttribute("data-options");
@@ -55,9 +54,14 @@ function convert(){
 			}
 			if(dat.search("hide")>0){
 				hide = true;
-			}
-			
+			}	
 		}
+		if(dat==null){
+			copy = false;
+			num = false;
+			hide = false;
+		}
+		
 		console.log("copy = "+copy)
 		console.log("num = "+num);
 
@@ -67,44 +71,29 @@ function convert(){
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				if(num == true){
-					str = addLineNums(str);
-				}
-				str = addTitle(str,title);
-				document.getElementsByClassName('code')[i].innerHTML = str;
+				doTheBiz(str,num,title,i);
 				break;
 			case "language-js":
 				str = languageJs(str);
-				if(num == true){
-					str = addLineNums(str);
-				}
-				str = addTitle(str,title);
-				document.getElementsByClassName('code')[i].innerHTML = str;
-				
+				doTheBiz(str,num,title,i);
 				break;
 			case "language-css":
 				str = languageCss(str);
-				if(num == true){
-					str = addLineNums(str);
-				}
-				str = addTitle(str,title);
-				document.getElementsByClassName('code')[i].innerHTML = str;
-				break;
+				doTheBiz(str,num,title,i);break;
 			case "language-html":
 				str = languageHTML(str);
+				doTheBiz(str,num,title,i);break;
+			case "language-terminal":
+				str = languageTerminal(str);
 				if(num == true){
 					str = addLineNums(str);
 				}
 				str = addTitle(str,title);
-				document.getElementsByClassName('code')[i].innerHTML = str;
-				break;
-			case "language-terminal":
-				str = languageTerminal(str);
 				document.getElementsByClassName('code')[i].innerHTML = str;
 				break;
 			case "language-bash":
 				str = languageBash(str);
-				document.getElementsByClassName('code')[i].innerHTML = str;
+				doTheBiz(str,num,title,i);
 				break;
 		}	
 	}
@@ -112,7 +101,15 @@ function convert(){
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
-
+function doTheBiz(str,num,title,i){
+	if(num == true){
+		str = addLineNums(str);
+	}
+	str = addCodeWrap(str,num);
+	str = addTitle(str,title);
+	document.getElementsByClassName('code')[i].innerHTML = str;
+	return;
+}
 function addTitle(str,title,i){
 	if(title){
 		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title + '</h2></div>' + '' + str;
@@ -121,6 +118,16 @@ function addTitle(str,title,i){
 	else{
 		return(str);
 	}
+}
+function addCodeWrap(str,num){
+	str ='<div class=\"codeWrap\">'+ str + '</div>';
+	if(num==false){
+			str ='<div class=\"codeWrapNoLineNum\">'+ str + '</div>';
+		}
+	if(num==true){
+			str ='<div class=\"codeWrapLineNum\">'+ str + '</div>';
+		}
+	return(str);
 }
 
 function addLineNums(str){
