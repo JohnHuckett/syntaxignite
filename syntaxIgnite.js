@@ -121,16 +121,20 @@ function addCopy(str){
 function hideCodeBlock(i){
 	document.getElementsByClassName('code')[i].style.display = hidden;
 }
-function copyCode(){
-	alert("hello");
+function copyCode(i){
+	alert(i);
+}
+function hideCode(i){
+	alert(i);
+	//document.getElementsByClassName('codeWrap')[i].style.display = hidden;
 }
 function addTitle(str,title,copy,hide,i){
 	var openTitleHTML = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title;
 	var closeTitleHTML ='</h2></div>' + '';
 	var openButtsHTML = '<span class="butts">';
 	var closeButtsHTML = '</span>';
-	var copyButtHTML = '<span class="copy">copy</span>';
-	var hideButtHTML = '<span class="hide">hide</span>';
+	var copyButtHTML = '<span class="copy" onclick="copyCode(' + i + ')">copy</span>';
+	var hideButtHTML = '<span class="hide" onclick="hideCode(' + i + ')">hide</span>';
 	var space = ' ';
 	if(title){
 			if((!copy)&&(!hide)){
