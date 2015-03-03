@@ -71,18 +71,18 @@ function convert(){
 		switch(foo){ 
 			case "language-c":
 				str = languageC(str);
-				doTheBiz(str,num,title,copy,i);
+				doTheBiz(str,num,title,copy,hide,i);
 				break;
 			case "language-js":
 				str = languageJs(str);
-				doTheBiz(str,num,title,copy,i);
+				doTheBiz(str,num,title,copy,hide,i);
 				break;
 			case "language-css":
 				str = languageCss(str);
-				doTheBiz(str,num,title,copy,i);break;
+				doTheBiz(str,num,title,copy,hide,i);break;
 			case "language-html":
 				str = languageHTML(str);
-				doTheBiz(str,num,title,copy,i);break;
+				doTheBiz(str,num,title,copy,hide,i);break;
 			case "language-terminal":
 				str = languageTerminal(str);
 				if(num == true){
@@ -93,7 +93,7 @@ function convert(){
 				break;
 			case "language-bash":
 				str = languageBash(str);
-				doTheBiz(str,num,title,copy,i);
+				doTheBiz(str,num,title,copy,hide,i);
 				break;
 		}	
 	}
@@ -101,17 +101,15 @@ function convert(){
 	timerStop = getDate();
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
-function doTheBiz(str,num,title,copy,i){
-	if(copy == true){
-		str = addCopy(str);
-	}
-	if(num == true){
+function doTheBiz(str,num,title,copy,hide,i){
+	//if(copy){
+		//str = addCopy(str);
+	//}
+	if(num){
 		str = addLineNums(str);
 	}
-
 	str = addCodeWrap(str,num);
-
-	str = addTitle(str,title);
+	str = addTitle(str,title,copy,hide,i);
 
 	document.getElementsByClassName('code')[i].innerHTML = str;
 	return;
@@ -120,11 +118,54 @@ function addCopy(str){
 	//str = str + '<button type=\"button\">copy</button>';
 	return(str);
 }
-function addTitle(str,title,i){
-
+function hideCodeBlock(i){
+	document.getElementsByClassName('code')[i].style.display = hidden;
+}
+function copyCode(){
+	alert("hello");
+}
+function addTitle(str,title,copy,hide,i){
+	var openTitleHTML = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title;
+	var closeTitleHTML ='</h2></div>' + '';
+	var openButtsHTML = '<span class="butts">';
+	var closeButtsHTML = '</span>';
+	var copyButtHTML = '<span class="copy">copy</span>';
+	var hideButtHTML = '<span class="hide">hide</span>';
+	var space = ' ';
 	if(title){
-		str = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title + '</h2></div>' + '' + str;
-		return(str);
+			if((!copy)&&(!hide)){
+				str = openTitleHTML + closeTitleHTML + str;
+				return(str);
+			}
+			if((copy)&&(!hide)){
+				str = openTitleHTML + openButtsHTML + copyButtHTML + closeButtsHTML+ closeTitleHTML + str;
+				return(str);
+			}
+			if((!copy)&&(hide)){
+				str = openTitleHTML + openButtsHTML + hideButtHTML + closeButtsHTML + closeTitleHTML + str;
+				return(str);
+			}
+			if((copy)&&(hide)){
+				str = openTitleHTML + openButtsHTML + copyButtHTML + space + hideButtHTML + closeButtsHTML + closeTitleHTML + str;
+				return(str);
+			}
+	}
+	if(!title){
+		if((!copy)&&(!hide)){
+				return(str);
+		}
+		if((copy)&&(!hide)){
+			str = openTitleHTML + openButtsHTML + copyButtHTML + closeButtsHTML + closeTitleHTML + str;
+			return(str);
+		}
+		if((!copy)&&(hide)){
+			str = openTitleHTML + openButtsHTML + hideButtHTML + closeButtsHTML + closeTitleHTML + str;
+			return(str);
+		}
+		if((copy)&&(hide)){
+			str = openTitleHTML + openButtsHTML + copyButtHTML + space + hideButtHTML + closeButtsHTML + closeTitleHTML + str;
+			return(str);
+		}
 	}
 	else{
 		return(str);
