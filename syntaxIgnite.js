@@ -121,15 +121,15 @@ function hideCode(i){
 	var state = targetElement.querySelector(".hide").innerHTML;
 	switch(state){
 		case "hide":
-			document.getElementsByClassName('code')[i].style.height = 6+'px';
-			document.getElementsByClassName('code')[i].style.overflow = 'hidden';
-			document.getElementsByClassName('codeWrap')[i].style.display = 'none';
+			targetElement.style.height = 6+'px';
+			targetElement.style.overflow = 'hidden';
+			targetElement.querySelector(".codeWrap").style.display = 'none';
 			targetElement.querySelector(".hide").innerHTML = 'view';
 			break;
 		case "view":
-			document.getElementsByClassName('code')[i].style.height = 'initial';
-			document.getElementsByClassName('code')[i].style.overflow = 'auto';
-			document.getElementsByClassName('codeWrap')[i].style.display = 'inherit';
+			targetElement.style.height = 'initial';
+			targetElement.style.overflow = 'auto';
+			targetElement.querySelector(".codeWrap").style.display = 'inherit';
 			targetElement.querySelector(".hide").innerHTML = 'hide';
 			break;
 	}
