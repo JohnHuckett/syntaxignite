@@ -8,12 +8,16 @@
 	-o-tab-size: 4;
 	tab-size: 4;
 	overflow: auto;
-	margin-top: .5em;
-	margin-bottom: .5em;
+	//margin-top: .5em;
+	//margin-bottom: .5em;
 	padding-top: 10px;
+									
 	padding-bottom: 10px;
 	border: solid grey 1px;
 	color:black;
+	//display: none;
+									//height: 6px;
+									//overflow: hidden;
 }
 .codeWithTitle{
 	padding:0px;
@@ -98,14 +102,23 @@ code{
 	top:-7px;
 	padding-top: 4px;
 }
+
 .codeWrapNoLineNum{
 	padding-left: 20px;
 	padding-right: 10px;
+										//display: none;
+
 }
 .codeWrapLineNum{
 	padding-left: 0;
 	padding-right: 20px;
+										//display: none;
 }
+
+.codeWrapNoLineNum, .codeWrapLineNum{
+	//display:none;
+}
+
 .butts{
 	position:absolute;
 	z-index: 10;

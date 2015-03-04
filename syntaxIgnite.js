@@ -61,11 +61,6 @@ function convert(){
 			num = false;
 			hide = false;
 		}
-		
-		//console.log("copy = "+copy)
-		//console.log("num = "+num);
-
-		
 		title = document.getElementsByClassName('code')[i].title;
 		//console.log(title);
 		switch(foo){ 
@@ -102,9 +97,6 @@ function convert(){
 	console.log(timerStop-timerStart+"ms (syntaxignite render time)");
 }
 function doTheBiz(str,num,title,copy,hide,i){
-	//if(copy){
-		//str = addCopy(str);
-	//}
 	if(num){
 		str = addLineNums(str);
 	}
@@ -125,8 +117,22 @@ function copyCode(i){
 	alert(i);
 }
 function hideCode(i){
-	alert(i);
-	//document.getElementsByClassName('codeWrap')[i].style.display = hidden;
+	var targetElement = document.getElementsByClassName('code')[i];
+	var state = targetElement.querySelector(".hide").innerHTML;
+	switch(state){
+		case "hide":
+			document.getElementsByClassName('code')[i].style.height = 6+'px';
+			document.getElementsByClassName('code')[i].style.overflow = 'hidden';
+			document.getElementsByClassName('codeWrap')[i].style.display = 'none';
+			targetElement.querySelector(".hide").innerHTML = 'view';
+			break;
+		case "view":
+			document.getElementsByClassName('code')[i].style.height = 'initial';
+			document.getElementsByClassName('code')[i].style.overflow = 'auto';
+			document.getElementsByClassName('codeWrap')[i].style.display = 'inherit';
+			targetElement.querySelector(".hide").innerHTML = 'hide';
+			break;
+	}
 }
 function addTitle(str,title,copy,hide,i){
 	var openTitleHTML = '<div class=\"codeTitle\"><h2 class=\"codeTitle\">' + '&nbsp;' + title;
@@ -187,12 +193,9 @@ function addCodeWrap(str,num){
 }
 
 function addLineNums(str){
-	//console.log(dat);
-	//var str = document.getElementById(str).innerHTML;
 	var res = str.split('\n');
 	var len = res.length-1;
 	var i = 0;
-	//console.log(res);
 	var lineNum;
 		for(i=0;i<len;i++){
 			lineNum = res+1;
