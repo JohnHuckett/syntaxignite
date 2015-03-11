@@ -3,11 +3,11 @@
 }
 .code{
 	font-size: 14px;
-	background-color: #fff;
+	background-color: #ddd;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
-	overflow: auto;
+	overflow: hidden;
 	//margin-top: .5em;
 	//margin-bottom: .5em;
 	padding-top: 10px;
@@ -15,15 +15,16 @@
 	padding-bottom: 10px;
 	border: solid grey 1px;
 	color:black;
-	//display: none;
-									//height: 6px;
-									//overflow: hidden;
+	//height:100%;
+}
+.code{
+	background-color: #ddd;
 }
 .codeWithTitle{
 	padding:0px;
 	//border:solid grey 0px;
 	font-size: 14px;
-	background-color: #eee;
+	//background-color: #eee;
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
@@ -42,9 +43,7 @@
 #conditional{
 	color: red;
 }
-code{
-	border:solid grey 1px;
-}
+
 #string{
 	color:green;
 }
@@ -78,10 +77,10 @@ code{
 }
 
 .lineNums{
-	color: #555;
-	background-color: white;
+	color: #5c8586;
+	//background-color: white;
 	display: inline-block;
-	padding-right: .5em;
+	//padding-right: .5em;
 }
 .lineNumDivs{
 	display:inline-block;
@@ -94,7 +93,7 @@ code{
 	//padding-left: .5em;
 	//height:100%;
 	position: relative;
-	background-color: grey;
+	background-color: #5c8586;
 	width:100%;
 	margin:0;
 	color:white;
@@ -103,22 +102,20 @@ code{
 	padding-top: 4px;
 }
 
+
+
 .codeWrapNoLineNum{
 	padding-left: 20px;
 	padding-right: 10px;
-										//display: none;
-
 }
 .codeWrapLineNum{
 	padding-left: 0;
 	padding-right: 20px;
-										//display: none;
 }
-
 .codeWrapNoLineNum, .codeWrapLineNum{
 	//display:none;
+	overflow: auto;
 }
-
 .butts{
 	position:absolute;
 	z-index: 10;
@@ -126,4 +123,32 @@ code{
 }
 .butts:hover{
 	cursor:pointer;
+}
+/*UNSELECTABLE*/
+.codeTitle{
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+}
+code{
+	border:solid grey 1px;
+	height: 100px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #bbb;
+}
+ 
+::-webkit-scrollbar-thumb {
+	background-color: #5c8586;
+}
+#attributes{
+	color:blue;
 }

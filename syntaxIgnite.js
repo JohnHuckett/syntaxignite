@@ -3,7 +3,7 @@
 */
 
 
-var LineNumbers = true;
+//var LineNumbers = true;
 var theme = "0";
 
 function cssInit(){
@@ -102,16 +102,8 @@ function doTheBiz(str,num,title,copy,hide,i){
 	}
 	str = addCodeWrap(str,num);
 	str = addTitle(str,title,copy,hide,i);
-
 	document.getElementsByClassName('code')[i].innerHTML = str;
 	return;
-}
-function addCopy(str){
-	//str = str + '<button type=\"button\">copy</button>';
-	return(str);
-}
-function hideCodeBlock(i){
-	document.getElementsByClassName('code')[i].style.display = hidden;
 }
 function copyCode(i){
 	alert(i);
@@ -143,6 +135,7 @@ function addTitle(str,title,copy,hide,i){
 	var hideButtHTML = '<span class="hide" onclick="hideCode(' + i + ')">hide</span>';
 	var space = ' ';
 	if(title){
+
 			if((!copy)&&(!hide)){
 				str = openTitleHTML + closeTitleHTML + str;
 				return(str);
@@ -249,17 +242,19 @@ function languageCss(str){
 	return(str)	//comments
 				.replace(/\/\/(.*?)\n/ , '<span id="comment">$&</span>')
 				//class
-				.replace(/\.(.*?)[a-z|A-Z|0-9]{0,}/g , '<span id="class">$&</span>')
+				.replace(/\.(.*?)\w+/g , '<span id="class">$&</span>')
 				//id
-				.replace(/#(.*?){/g , '<span id="id">#$1</span>{')
+				.replace(/#(\w*?)+/gm , '<span id="id">$&</span>')
 				//hex number
-				.replace(/#(.*?);/g , '<span id="number">#$1</span>;')
+				.replace(/(#[\da-f]{6})|(#[\da-f]{3})/gi , '<span id="number">$&</span>')
 				//number
 
 				//px
 				.replace(/px/,'<span id="px">$&</span>')
-				//tags
-				.replace(/\n(.*?){/g, '\n<span id="tags">$1</span>{')
+				//elements
+				//attributes
+				.replace(/([\n\t\s\-\{}])(\w*(?=:|\-))/g,'<span id="attributes">$&</span>')
+				//.replace(/\n(.*?){/g, '\n<span id="tags">$1</span>{')
 }
 
 function languageJs(str){
@@ -270,6 +265,7 @@ function languageJs(str){
 				//strings
 				.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, "<span id=\"string\"\>$&\</span>")
 				//numbers
+				//.replace(/[0-9]/g,'<span id="number">$&</span>')
 				//.replace(/[0-9]/g,'<span id="number">$&</span>')
 				//comments
 				.replace(/\/\*/g,'<span id="comment">/*')

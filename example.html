@@ -6,14 +6,32 @@
 	<script type="text/javascript" src="syntaxIgnite.js"></script>
 	<style type="text/css">
 	html{
-		background-color: #111;
+		//background-color: #999;
 	}
+	#balls{
+		width: 100px;
+		height: 100px;
+		color: red;
+		//background-color: red;
+		position: fixed;
+		right: 40px;
+		z-index: 100;
+		opacity: 0.1;
+		-ms-transform: rotate(90deg); /* IE 9 */
+    	-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    	transform: rotate(90deg);
+	}
+	#balls:hover{
+		opacity:1;
+	}
+	     
+
 	</style>
 
 </head>
 
 <body>
-
+<div id="balls"><input type="range"></input><input type="range"></input><input type="range"></input></div>
 <h1>Function to Replace Character in String</h1>
 <h2>C</h2>
 
@@ -72,11 +90,11 @@ function languageCss(str){
 </pre>
 <h2>CSS</h2>
 <pre class="code" id="language-css" title="example.css" data-options="copy num hide">
-#ballsToYouFucknuts {
+#ballsToYouFucknuts{
 	color:#121212; //this is a comment
 }
-.arse {
-	color:#2g2g2g;
+.arse{
+	color:#2f2f2f;
 }
 .helloMonkeyFace{
 	
@@ -84,6 +102,8 @@ function languageCss(str){
 code{
 	border:solid grey 1px;
 }
+
+#ballsToYouFucknuts{color:#121212;}.arse{color:#2f2f2f;}.helloMonkeyFace{}code{border:solid grey 1px;}
 </pre>
 <h2>HTML</h2>
 
